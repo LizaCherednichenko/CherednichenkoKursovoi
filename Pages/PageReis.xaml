@@ -9,6 +9,24 @@
       Title="PageReis">
 
     <Grid>
-        <TextBlock Text="Рейсы" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+        <DataGrid x:Name="DGReis" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер рейса" Binding="{Binding Number}" Width="1.5*"/>
+                <DataGridTextColumn Header="Город отправления" Binding="{Binding City.Name}" Width="2*"/>
+                <DataGridTextColumn Header="Город прибытия" Binding="{Binding City.Name}" Width="2*"/>
+                <DataGridTextColumn Header="Дата отправления" Binding="{Binding Otpravl}" Width="2*"/>
+                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Prise}" Width="1*"/>
+                <DataGridTextColumn Header="Свободные места" Binding="{Binding SvobodnMest}" Width="2*"/>
+
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnVibor" Content="Выбрать" Click="BtnVibor_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

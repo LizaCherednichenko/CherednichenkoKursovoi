@@ -16,19 +16,19 @@ using System.Windows.Shapes;
 namespace CherednichenkoKursovoi.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageReis.xaml
+    /// Логика взаимодействия для PageZakaz.xaml
     /// </summary>
-    public partial class PageReis : Page
+    public partial class PageZakaz : Page
     {
-        public PageReis()
+        public PageZakaz()
         {
             InitializeComponent();
-            DGReis.ItemsSource = AirEntities.GetContext().Reis.ToList();
+            DGPass.ItemsSource = AirEntities.GetContext().Passajir.ToList();
         }
 
-        private void BtnVibor_Click(object sender, RoutedEventArgs e)
+        private void BtnAddPass_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageZakaz());
+            Manager.MainFrame.Navigate(new PagePass());
         }
     }
 }
