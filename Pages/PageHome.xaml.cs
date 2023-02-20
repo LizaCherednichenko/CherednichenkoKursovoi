@@ -23,21 +23,21 @@ namespace CherednichenkoKursovoi.Pages
         public PageHome()
         {
             InitializeComponent();
+            DGZakaz.ItemsSource = AirEntities.GetContext().Zakaz.ToList();
         }
 
-        private void BtnInManager_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageReis());
+            Manager.MainFrame.Navigate(new PageOformZak());
         }
 
-        private void BtnInAdmin_Click(object sender, RoutedEventArgs e)
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageReis());
-        }
-
-        private void BtnOut_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
+            if (Visibility == Visibility.Visible)
+            {
+                AirEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGZakaz.ItemsSource = AirEntities.GetContext().Zakaz.ToList();
+            }
         }
     }
 }

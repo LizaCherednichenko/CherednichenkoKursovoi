@@ -12,7 +12,7 @@
           <Property Name="IdAirpalne" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="KolichMest" Type="int" Nullable="false" />
-          <Property Name="RaspolojenieImg" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RaspolojenieImg" Type="nvarchar" MaxLength="50" />
           <Property Name="Info" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="City">
@@ -25,14 +25,14 @@
         </EntityType>
         <EntityType Name="Passajir">
           <Key>
-            <PropertyRef Name="IdPass" />
+            <PropertyRef Name="IdPassajir" />
           </Key>
-          <Property Name="IdPass" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdPassajir" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="int" Nullable="false" />
-          <Property Name="Pasport" Type="int" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Pasport" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="Reis">
           <Key>
@@ -65,16 +65,7 @@
           </Key>
           <Property Name="IdZakaz" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdReis" Type="int" Nullable="false" />
-          <Property Name="KolichBilet" Type="int" Nullable="false" />
-          <Property Name="Sum" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="ZakazOfPass">
-          <Key>
-            <PropertyRef Name="IdZakaz" />
-            <PropertyRef Name="IdPass" />
-          </Key>
-          <Property Name="IdZakaz" Type="int" Nullable="false" />
-          <Property Name="IdPass" Type="int" Nullable="false" />
+          <Property Name="IdPassajir" Type="int" />
         </EntityType>
         <Association Name="FK_Reis_Airplane">
           <End Role="Airplane" Type="Self.Airplane" Multiplicity="1" />
@@ -112,6 +103,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zakaz_Passajir">
+          <End Role="Passajir" Type="Self.Passajir" Multiplicity="0..1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passajir">
+              <PropertyRef Name="IdPassajir" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="IdPassajir" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Zakaz_Reis">
           <End Role="Reis" Type="Self.Reis" Multiplicity="1" />
           <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
@@ -124,30 +127,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_ZakazOfPass_Passajir">
-          <End Role="Passajir" Type="Self.Passajir" Multiplicity="1" />
-          <End Role="ZakazOfPass" Type="Self.ZakazOfPass" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Passajir">
-              <PropertyRef Name="IdPass" />
-            </Principal>
-            <Dependent Role="ZakazOfPass">
-              <PropertyRef Name="IdPass" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_ZakazOfPass_Zakaz">
-          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="1" />
-          <End Role="ZakazOfPass" Type="Self.ZakazOfPass" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Zakaz">
-              <PropertyRef Name="IdZakaz" />
-            </Principal>
-            <Dependent Role="ZakazOfPass">
-              <PropertyRef Name="IdZakaz" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="Хранилище AirModelContainer">
           <EntitySet Name="Airplane" EntityType="Self.Airplane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
@@ -155,7 +134,6 @@
           <EntitySet Name="Reis" EntityType="Self.Reis" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="ZakazOfPass" EntityType="Self.ZakazOfPass" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Reis_Airplane" Association="Self.FK_Reis_Airplane">
             <End Role="Airplane" EntitySet="Airplane" />
             <End Role="Reis" EntitySet="Reis" />
@@ -168,17 +146,13 @@
             <End Role="City" EntitySet="City" />
             <End Role="Reis" EntitySet="Reis" />
           </AssociationSet>
+          <AssociationSet Name="FK_Zakaz_Passajir" Association="Self.FK_Zakaz_Passajir">
+            <End Role="Passajir" EntitySet="Passajir" />
+            <End Role="Zakaz" EntitySet="Zakaz" />
+          </AssociationSet>
           <AssociationSet Name="FK_Zakaz_Reis" Association="Self.FK_Zakaz_Reis">
             <End Role="Reis" EntitySet="Reis" />
             <End Role="Zakaz" EntitySet="Zakaz" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ZakazOfPass_Passajir" Association="Self.FK_ZakazOfPass_Passajir">
-            <End Role="Passajir" EntitySet="Passajir" />
-            <End Role="ZakazOfPass" EntitySet="ZakazOfPass" />
-          </AssociationSet>
-          <AssociationSet Name="FK_ZakazOfPass_Zakaz" Association="Self.FK_ZakazOfPass_Zakaz">
-            <End Role="Zakaz" EntitySet="Zakaz" />
-            <End Role="ZakazOfPass" EntitySet="ZakazOfPass" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -193,7 +167,7 @@
           <Property Name="IdAirpalne" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="KolichMest" Type="Int32" Nullable="false" />
-          <Property Name="RaspolojenieImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RaspolojenieImg" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Info" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Reis" Relationship="Self.FK_Reis_Airplane" FromRole="Airplane" ToRole="Reis" />
         </EntityType>
@@ -209,15 +183,15 @@
         </EntityType>
         <EntityType Name="Passajir">
           <Key>
-            <PropertyRef Name="IdPass" />
+            <PropertyRef Name="IdPassajir" />
           </Key>
-          <Property Name="IdPass" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdPassajir" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="Int32" Nullable="false" />
-          <Property Name="Pasport" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Zakaz" Relationship="Self.ZakazOfPass" FromRole="Passajir" ToRole="Zakaz" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pasport" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Passajir" FromRole="Passajir" ToRole="Zakaz" />
         </EntityType>
         <EntityType Name="Reis">
           <Key>
@@ -254,10 +228,9 @@
           </Key>
           <Property Name="IdZakaz" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdReis" Type="Int32" Nullable="false" />
-          <Property Name="KolichBilet" Type="Int32" Nullable="false" />
-          <Property Name="Sum" Type="Int32" Nullable="false" />
+          <Property Name="IdPassajir" Type="Int32" />
+          <NavigationProperty Name="Passajir" Relationship="Self.FK_Zakaz_Passajir" FromRole="Zakaz" ToRole="Passajir" />
           <NavigationProperty Name="Reis" Relationship="Self.FK_Zakaz_Reis" FromRole="Zakaz" ToRole="Reis" />
-          <NavigationProperty Name="Passajir" Relationship="Self.ZakazOfPass" FromRole="Zakaz" ToRole="Passajir" />
         </EntityType>
         <Association Name="FK_Reis_Airplane">
           <End Role="Airplane" Type="Self.Airplane" Multiplicity="1" />
@@ -295,6 +268,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Zakaz_Passajir">
+          <End Role="Passajir" Type="Self.Passajir" Multiplicity="0..1" />
+          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Passajir">
+              <PropertyRef Name="IdPassajir" />
+            </Principal>
+            <Dependent Role="Zakaz">
+              <PropertyRef Name="IdPassajir" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Zakaz_Reis">
           <End Role="Reis" Type="Self.Reis" Multiplicity="1" />
           <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
@@ -306,10 +291,6 @@
               <PropertyRef Name="IdReis" />
             </Dependent>
           </ReferentialConstraint>
-        </Association>
-        <Association Name="ZakazOfPass">
-          <End Role="Passajir" Type="Self.Passajir" Multiplicity="*" />
-          <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
         </Association>
         <EntityContainer Name="AirEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Airplane" EntityType="Self.Airplane" />
@@ -330,12 +311,12 @@
             <End Role="City" EntitySet="City" />
             <End Role="Reis" EntitySet="Reis" />
           </AssociationSet>
-          <AssociationSet Name="FK_Zakaz_Reis" Association="Self.FK_Zakaz_Reis">
-            <End Role="Reis" EntitySet="Reis" />
+          <AssociationSet Name="FK_Zakaz_Passajir" Association="Self.FK_Zakaz_Passajir">
+            <End Role="Passajir" EntitySet="Passajir" />
             <End Role="Zakaz" EntitySet="Zakaz" />
           </AssociationSet>
-          <AssociationSet Name="ZakazOfPass" Association="Self.ZakazOfPass">
-            <End Role="Passajir" EntitySet="Passajir" />
+          <AssociationSet Name="FK_Zakaz_Reis" Association="Self.FK_Zakaz_Reis">
+            <End Role="Reis" EntitySet="Reis" />
             <End Role="Zakaz" EntitySet="Zakaz" />
           </AssociationSet>
         </EntityContainer>
@@ -368,7 +349,7 @@
           <EntitySetMapping Name="Passajir">
             <EntityTypeMapping TypeName="AirModel.Passajir">
               <MappingFragment StoreEntitySet="Passajir">
-                <ScalarProperty Name="IdPass" ColumnName="IdPass" />
+                <ScalarProperty Name="IdPassajir" ColumnName="IdPassajir" />
                 <ScalarProperty Name="Familia" ColumnName="Familia" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
@@ -409,19 +390,10 @@
               <MappingFragment StoreEntitySet="Zakaz">
                 <ScalarProperty Name="IdZakaz" ColumnName="IdZakaz" />
                 <ScalarProperty Name="IdReis" ColumnName="IdReis" />
-                <ScalarProperty Name="KolichBilet" ColumnName="KolichBilet" />
-                <ScalarProperty Name="Sum" ColumnName="Sum" />
+                <ScalarProperty Name="IdPassajir" ColumnName="IdPassajir" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="ZakazOfPass" TypeName="AirModel.ZakazOfPass" StoreEntitySet="ZakazOfPass">
-            <EndProperty Name="Passajir">
-              <ScalarProperty Name="IdPass" ColumnName="IdPass" />
-            </EndProperty>
-            <EndProperty Name="Zakaz">
-              <ScalarProperty Name="IdZakaz" ColumnName="IdZakaz" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

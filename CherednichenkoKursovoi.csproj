@@ -71,16 +71,29 @@
     <Compile Include="City.cs">
       <DependentUpon>ModelAir.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelAir.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAir.Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="ModelAir.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAir.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModelAir.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelAir.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PageOformZak.xaml.cs">
+      <DependentUpon>PageOformZak.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PagePassAdd.xaml.cs">
+      <DependentUpon>PagePassAdd.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PagePass.xaml.cs">
       <DependentUpon>PagePass.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PageZakaz.xaml.cs">
-      <DependentUpon>PageZakaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Passajir.cs">
       <DependentUpon>ModelAir.tt</DependentUpon>
@@ -110,7 +123,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PagePass.xaml">
+    <Page Include="Pages\PageOformZak.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagePassAdd.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,23 +135,13 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PageZakaz.xaml">
+    <Page Include="Pages\PagePass.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager.cs" />
-    <Compile Include="ModelAir.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelAir.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelAir.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelAir.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Pages\PageHome.xaml.cs">
       <DependentUpon>PageHome.xaml</DependentUpon>
     </Compile>
@@ -178,19 +185,19 @@
     <Resource Include="Resources\logo.png" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelAir.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ModelAir.Context.cs</LastGenOutput>
       <DependentUpon>ModelAir.edmx</DependentUpon>
+      <LastGenOutput>ModelAir.Context.cs</LastGenOutput>
     </Content>
     <Content Include="ModelAir.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAir.edmx</DependentUpon>
       <LastGenOutput>ModelAir.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

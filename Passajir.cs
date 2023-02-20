@@ -20,12 +20,12 @@ namespace CherednichenkoKursovoi
             this.Zakaz = new HashSet<Zakaz>();
         }
     
-        public int IdPass { get; set; }
+        public int IdPassajir { get; set; }
         public string Familia { get; set; }
         public string Name { get; set; }
         public string Otchestvo { get; set; }
-        public int Phone { get; set; }
-        public int Pasport { get; set; }
+        public string Phone { get; set; }
+        public string Pasport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zakaz> Zakaz { get; set; }

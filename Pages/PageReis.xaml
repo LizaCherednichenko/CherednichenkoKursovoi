@@ -18,14 +18,6 @@
                 <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2*"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Prise}" Width="1*"/>
                 <DataGridTextColumn Header="Свободные места" Binding="{Binding SvobodnMest}" Width="2*"/>
-
-                <DataGridTemplateColumn Width="auto">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <Button x:Name="BtnVibor" Content="Выбрать" Click="BtnVibor_Click"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

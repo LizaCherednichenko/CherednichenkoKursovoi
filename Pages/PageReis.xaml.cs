@@ -26,9 +26,6 @@ namespace CherednichenkoKursovoi.Pages
             DGReis.ItemsSource = AirEntities.GetContext().Reis.ToList();
         }
 
-        private void BtnVibor_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new PageZakaz());
-        }
+        
     }
 }

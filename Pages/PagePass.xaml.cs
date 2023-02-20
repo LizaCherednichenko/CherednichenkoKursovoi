@@ -16,59 +16,30 @@ using System.Windows.Shapes;
 namespace CherednichenkoKursovoi.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PagePass.xaml
+    /// Логика взаимодействия для PageZakaz.xaml
     /// </summary>
-    public partial class PagePass : Page
+    public partial class PageZakaz : Page
     {
 
-        private Passajir _currentPass = new Passajir();
 
-        public PagePass()
+        public PageZakaz(Reis selectedReis)
         {
             InitializeComponent();
-            DataContext = _currentPass;
+
+            DGPass.ItemsSource = AirEntities.GetContext().Passajir.ToList();
         }
 
-        private void BtnOtm_Click(object sender, RoutedEventArgs e)
+        private void BtnAddPass_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.GoBack();
+            Manager.MainFrame.Navigate(new PagePass());
         }
 
-        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            StringBuilder errors = new StringBuilder();
-
-            if (string.IsNullOrWhiteSpace(_currentPass.Familia))
-                errors.AppendLine("Введите фамилию");
-            if (string.IsNullOrWhiteSpace(_currentPass.Name))
-                errors.AppendLine("Введите имя");
-            if (string.IsNullOrWhiteSpace(_currentPass.Otchestvo))
-                errors.AppendLine("Введите отчество");
-            if (_currentPass.Phone == null)
-                errors.AppendLine("Введите номер телефона");
-            if (_currentPass.Pasport == null)
-                errors.AppendLine("Введите данные паспорта");
-
-
-            if (errors.Length > 0)
+            if (Visibility == Visibility.Visible)
             {
-                MessageBox.Show(errors.ToString());
-                return;
-            }
-
-            if (_currentPass.IdPass == 0)
-                AirEntities.GetContext().Passajir.Add(_currentPass);
-
-            try
-            {
-                AirEntities.GetContext().SaveChanges();
-                MessageBox.Show("Информация сохранена");
-                Manager.MainFrame.GoBack();
-            }
-
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                AirEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
+                DGPass.ItemsSource = AirEntities.GetContext().Passajir.ToList();
             }
         }
     }
