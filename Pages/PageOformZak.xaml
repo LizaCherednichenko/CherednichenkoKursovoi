@@ -10,18 +10,23 @@
 
     <Grid>
         <StackPanel VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
+            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="50">
                 <TextBlock Width="200" Text="Рейс"/>
-                <ComboBox Width="200" x:Name="CBReis" SelectedItem="{Binding Reis}" DisplayMemberPath="{Binding Number}"/>
-                <Button x:Name="BtnReis" Content="Посмотреть список рейсов" Click="BtnReis_Click"/>
+                <ComboBox Width="200" x:Name="CBReis" SelectedItem="{Binding Reis}" DisplayMemberPath="Number" Height="30"/>
+                <Button x:Name="BtnReis" Content="Посмотреть список" Click="BtnReis_Click"/>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
+            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="50">
                 <TextBlock Width="200" Text="Пассажир"/>
-                <ComboBox Width="200" x:Name="CBPass" SelectedItem="{Binding Passajir}" DisplayMemberPath="{Binding Familia}"/>
-                <Button x:Name="BtnPass" Content="Посмотреть список пассажиров" Click="BtnPass_Click"/>
+                <ComboBox Width="200" x:Name="CBPass" SelectedItem="{Binding Passajir}" DisplayMemberPath="Familia" Height="30"/>
+                <Button x:Name="BtnPass" Content="Посмотреть список" Click="BtnPass_Click"/>
             </StackPanel>
 
+            <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">
+                <Button x:Name="BtnSave" Content="Сохранить" Click="BtnSave_Click"/>
+                <Button x:Name="BtnOtm" Content="Отмена" Click="BtnOtm_Click"/>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Page>

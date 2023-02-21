@@ -1,4 +1,4 @@
-﻿<Page x:Class="CherednichenkoKursovoi.Pages.PageHome"
+﻿<Page x:Class="CherednichenkoKursovoi.Pages.PageZakaz"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -19,9 +19,20 @@
                 <DataGridTextColumn Header="Номер заказа" Binding="{Binding IdZakaz}" Width="*"/>
                 <DataGridTextColumn Header="Рейс" Binding="{Binding Reis.Number}" Width="*"/>
                 <DataGridTextColumn Header="Пассажир" Binding="{Binding Passajir.Familia}" Width="*"/>
+                <DataGridTemplateColumn Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnRedact" Content="Изменить" Click="BtnRedact_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="1" Content="Оформить заказ" Click="Button_Click"/>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="1">
+            <Button x:Name="BtnZakAdd" Content="Оформить заказ" Click="BtnZakAdd_Click"/>
+            <Button x:Name="BtnDel" Content="Удалить заказ" Click="BtnDel_Click"/>
+        </StackPanel>
+        
     </Grid>
 </Page>

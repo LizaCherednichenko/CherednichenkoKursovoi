@@ -119,7 +119,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\PageHome.xaml">
+    <Page Include="Pages\PageZakaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -142,8 +142,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager.cs" />
-    <Compile Include="Pages\PageHome.xaml.cs">
-      <DependentUpon>PageHome.xaml</DependentUpon>
+    <Compile Include="Pages\PageZakaz.xaml.cs">
+      <DependentUpon>PageZakaz.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PageReis.xaml.cs">
       <DependentUpon>PageReis.xaml</DependentUpon>
@@ -198,6 +198,7 @@
       <DependentUpon>ModelAir.edmx</DependentUpon>
       <LastGenOutput>ModelAir.cs</LastGenOutput>
     </Content>
+    <Resource Include="Resources\salon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

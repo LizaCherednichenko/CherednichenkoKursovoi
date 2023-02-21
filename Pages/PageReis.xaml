@@ -17,7 +17,6 @@
                 <DataGridTextColumn Header="Дата отправления" Binding="{Binding Otpravl}" Width="2*"/>
                 <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2*"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Prise}" Width="1*"/>
-                <DataGridTextColumn Header="Свободные места" Binding="{Binding SvobodnMest}" Width="2*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

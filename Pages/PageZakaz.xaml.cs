@@ -16,21 +16,19 @@ using System.Windows.Shapes;
 namespace CherednichenkoKursovoi.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PageZakaz.xaml
+    /// Логика взаимодействия для PageHome.xaml
     /// </summary>
-    public partial class PagePass : Page
+    public partial class PageZakaz : Page
     {
-
-        public PagePass()
+        public PageZakaz()
         {
             InitializeComponent();
-
-            DGPassaj.ItemsSource = AirEntities.GetContext().Passajir.ToList();
+            DGZakaz.SelectedItem = AirEntities.GetContext().Zakaz.ToList();
         }
 
-        private void BtnAddPass_Click(object sender, RoutedEventArgs e)
+        private void BtnZakAdd_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PagePassAdd(null));
+            Manager.MainFrame.Navigate(new PageOformZak(null));
         }
 
         private void Page_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
@@ -38,29 +36,24 @@ namespace CherednichenkoKursovoi.Pages
             if (Visibility == Visibility.Visible)
             {
                 AirEntities.GetContext().ChangeTracker.Entries().ToList().ForEach(p => p.Reload());
-                DGPassaj.ItemsSource = AirEntities.GetContext().Passajir.ToList();
+                DGZakaz.ItemsSource = AirEntities.GetContext().Zakaz.ToList();
             }
-        }
-
-        private void BtnRedact_Click(object sender, RoutedEventArgs e)
-        {
-            Manager.MainFrame.Navigate(new PagePassAdd((sender as Button).DataContext as Passajir));
         }
 
         private void BtnDel_Click(object sender, RoutedEventArgs e)
         {
-            var DateForDel = DGPassaj.SelectedItems.Cast<Passajir>().ToList();
+            var DateForDel = DGZakaz.SelectedItems.Cast<Zakaz>().ToList();
 
-            if (MessageBox.Show("Вы действительно хотите удалить выбранные данные?", "Предупреждение",MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Вы действительно хотите удалить выбранные данные?", "Предупреждение", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 try
                 {
-                    AirEntities.GetContext().Passajir.RemoveRange(DateForDel);
+                    AirEntities.GetContext().Zakaz.RemoveRange(DateForDel);
                     AirEntities.GetContext().SaveChanges();
 
                     MessageBox.Show("Данные удалены!");
 
-                    DGPassaj.ItemsSource = AirEntities.GetContext().Passajir.ToList();
+                    DGZakaz.ItemsSource = AirEntities.GetContext().Zakaz.ToList();
                 }
 
                 catch (Exception ex)
@@ -68,6 +61,11 @@ namespace CherednichenkoKursovoi.Pages
                     MessageBox.Show(ex.Message);
                 }
             }
+        }
+
+        private void BtnRedact_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new PageOformZak((sender as Button).DataContext as Zakaz));
         }
     }
 }

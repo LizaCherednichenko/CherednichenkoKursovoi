@@ -26,6 +26,5 @@ namespace CherednichenkoKursovoi.Pages
             DGReis.ItemsSource = AirEntities.GetContext().Reis.ToList();
         }
 
-        
     }
 }

@@ -18,14 +18,18 @@ namespace CherednichenkoKursovoi.Pages
     /// <summary>
     /// Логика взаимодействия для PagePass.xaml
     /// </summary>
-    public partial class PagePass : Page
+    public partial class PagePassAdd : Page
     {
 
         private Passajir _currentPass = new Passajir();
 
-        public PagePass()
+        public PagePassAdd(Passajir selectPass)
         {
             InitializeComponent();
+            if (selectPass != null)
+            {
+                _currentPass = selectPass;
+            }
             DataContext = _currentPass;
         }
 

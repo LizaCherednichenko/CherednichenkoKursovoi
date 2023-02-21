@@ -23,7 +23,7 @@ namespace CherednichenkoKursovoi
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.PageHome());
+            MainFrame.Navigate(new Pages.PageZakaz());
             Manager.MainFrame = MainFrame;
         }
 
@@ -38,6 +38,11 @@ namespace CherednichenkoKursovoi
         private void BtnBack_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.GoBack();
+        }
+
+        private void BtnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

@@ -20,9 +20,16 @@ namespace CherednichenkoKursovoi.Pages
     /// </summary>
     public partial class PageOformZak : Page
     {
-        public PageOformZak()
+
+        private Zakaz _currentZakaz = new Zakaz();
+
+        public PageOformZak(Zakaz selectZakaz)
         {
             InitializeComponent();
+
+            if (selectZakaz != null)
+                _currentZakaz = selectZakaz;
+             DataContext = _currentZakaz;
 
             CBPass.ItemsSource = AirEntities.GetContext().Passajir.ToList();
             CBReis.ItemsSource = AirEntities.GetContext().Reis.ToList();
@@ -35,7 +42,46 @@ namespace CherednichenkoKursovoi.Pages
 
         private void BtnPass_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageZakaz());
+            Manager.MainFrame.Navigate(new PagePass());
+        }
+
+        private void BtnOtm_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.GoBack();
+        }
+
+        private void BtnSave_Click(object sender, RoutedEventArgs e)
+        {
+            StringBuilder errors = new StringBuilder();
+
+            if (_currentZakaz.Reis == null)
+                errors.AppendLine("Выберите рейс");
+            if (_currentZakaz.Passajir == null)
+                errors.AppendLine("Укажите пассажира");
+
+            if (errors.Length > 0)
+            {
+                MessageBox.Show(errors.ToString());
+                return;
+            }
+
+            if (_currentZakaz.IdZakaz == 0)
+                AirEntities.GetContext().Zakaz.Add(_currentZakaz);
+            
+            try
+            {
+                AirEntities.GetContext().SaveChanges();
+                MessageBox.Show("Информация сохранена!");
+                Manager.MainFrame.GoBack();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
+
+            
+
         }
     }
 }
