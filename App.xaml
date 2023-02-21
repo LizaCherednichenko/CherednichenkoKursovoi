@@ -9,6 +9,16 @@
             <Setter Property="Height" Value="30"/>
             <Setter Property="Margin" Value="5"/>
             <Setter Property="Background" Value="#FFCBA6FF"/>
+            <Setter Property="FontFamily" Value="Franklin Gothic Demi Cond"/>
+        </Style>
+        <Style TargetType="DataGrid">
+            <Setter Property="FontFamily" Value="Franklin Gothic Demi Cond"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="FontFamily" Value="Franklin Gothic Demi Cond"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Franklin Gothic Demi Cond"/>
         </Style>
     </Application.Resources>
 </Application>
