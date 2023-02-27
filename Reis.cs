@@ -28,7 +28,6 @@ namespace CherednichenkoKursovoi
         public System.DateTime Pribit { get; set; }
         public decimal Prise { get; set; }
         public int KolichMest { get; set; }
-        public int SvobodnMest { get; set; }
         public int IdAirplane { get; set; }
     
         public virtual Airplane Airplane { get; set; }

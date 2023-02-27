@@ -46,7 +46,6 @@
           <Property Name="Pribit" Type="datetime" Nullable="false" />
           <Property Name="Prise" Type="money" Nullable="false" />
           <Property Name="KolichMest" Type="int" Nullable="false" />
-          <Property Name="SvobodnMest" Type="int" Nullable="false" />
           <Property Name="IdAirplane" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
@@ -205,7 +204,6 @@
           <Property Name="Pribit" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Prise" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="KolichMest" Type="Int32" Nullable="false" />
-          <Property Name="SvobodnMest" Type="Int32" Nullable="false" />
           <Property Name="IdAirplane" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Airplane" Relationship="Self.FK_Reis_Airplane" FromRole="Reis" ToRole="Airplane" />
           <NavigationProperty Name="City" Relationship="Self.FK_Reis_City" FromRole="Reis" ToRole="City" />
@@ -369,7 +367,6 @@
                 <ScalarProperty Name="Pribit" ColumnName="Pribit" />
                 <ScalarProperty Name="Prise" ColumnName="Prise" />
                 <ScalarProperty Name="KolichMest" ColumnName="KolichMest" />
-                <ScalarProperty Name="SvobodnMest" ColumnName="SvobodnMest" />
                 <ScalarProperty Name="IdAirplane" ColumnName="IdAirplane" />
               </MappingFragment>
             </EntityTypeMapping>
