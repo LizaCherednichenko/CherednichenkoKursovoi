@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CherednichenkoKursovoi"
         mc:Ignorable="d"
-        Title="AirFly" Height="450" MinHeight="450" Width="800" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="AirFly" Height="650" MinHeight="450" Width="1000" MinWidth="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>

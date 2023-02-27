@@ -20,6 +20,7 @@ namespace CherednichenkoKursovoi.Pages
     /// </summary>
     public partial class PagePassAdd : Page
     {
+        decimal s;
 
         private Passajir _currentPass = new Passajir();
 
@@ -48,10 +49,10 @@ namespace CherednichenkoKursovoi.Pages
                 errors.AppendLine("Введите имя");
             if (string.IsNullOrWhiteSpace(_currentPass.Otchestvo))
                 errors.AppendLine("Введите отчество");
-            if (string.IsNullOrWhiteSpace(_currentPass.Phone))
-                errors.AppendLine("Введите номер телефона");
-            if (string.IsNullOrWhiteSpace(_currentPass.Pasport))
-                errors.AppendLine("Введите данные паспорта");
+            if (_currentPass.Phone <= 0 || _currentPass.Phone.ToString(TBPhone.Text).Length < 11 )
+                errors.AppendLine("Введите номер телефона (11 цифр)");
+            if (_currentPass.Pasport <= 0 || _currentPass.Pasport.ToString(TBPass.Text).Length < 10)
+                errors.AppendLine("Введите данные паспорта (10 цифр)");
 
 
             if (errors.Length > 0)
@@ -73,6 +74,30 @@ namespace CherednichenkoKursovoi.Pages
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void TBPhone_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                decimal s = Convert.ToDecimal(TBPhone.Text);
+            }
+            catch (System.FormatException)
+            {
+                
+            }
+        }
+
+        private void TBPass_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+                decimal s = Convert.ToDecimal(TBPass.Text);
+            }
+            catch (System.FormatException)
+            {
+
             }
         }
     }

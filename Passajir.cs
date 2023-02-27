@@ -24,8 +24,8 @@ namespace CherednichenkoKursovoi
         public string Familia { get; set; }
         public string Name { get; set; }
         public string Otchestvo { get; set; }
-        public string Phone { get; set; }
-        public string Pasport { get; set; }
+        public decimal Phone { get; set; }
+        public decimal Pasport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Zakaz> Zakaz { get; set; }

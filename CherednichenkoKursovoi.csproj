@@ -192,6 +192,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo.ico" />
+    <Resource Include="Resources\salon.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="ModelAir.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelAir.edmx</DependentUpon>
@@ -202,7 +205,6 @@
       <DependentUpon>ModelAir.edmx</DependentUpon>
       <LastGenOutput>ModelAir.cs</LastGenOutput>
     </Content>
-    <Resource Include="Resources\salon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
