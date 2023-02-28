@@ -12,12 +12,12 @@
         <DataGrid x:Name="DGReis" AutoGenerateColumns="False" IsReadOnly="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер рейса" Binding="{Binding Number}" Width="1.5*"/>
-                <DataGridTextColumn Header="Город отправления" Binding="{Binding City.Name}" Width="2*"/>
-                <DataGridTextColumn Header="Город прибытия" Binding="{Binding City.Name}" Width="2*"/>
-                <DataGridTextColumn Header="Дата отправления" Binding="{Binding Otpravl}" Width="2*"/>
-                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2*"/>
-                <DataGridTextColumn Header="Цена" Binding="{Binding Prise}" Width="1*"/>
-                <DataGridTextColumn Header="Количество мест" Binding="{Binding SvobodnMest}" Width="2*"/>
+                <DataGridTextColumn Header="Город отправления" Binding="{Binding City.Name}" Width="2.1*"/>
+                <DataGridTextColumn Header="Город прибытия" Binding="{Binding City1.Name}" Width="2*"/>
+                <DataGridTextColumn Header="Дата отправления" Binding="{Binding Otpravl}" Width="2.2*"/>
+                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2.2*"/>
+                <DataGridTextColumn Header="Цена" Binding="{Binding Prise, StringFormat=0.00}" Width="1*"/>
+                <DataGridTextColumn Header="Количество мест" Binding="{Binding KolichMest}" Width="1.9*"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

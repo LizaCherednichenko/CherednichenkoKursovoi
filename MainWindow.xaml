@@ -14,28 +14,33 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="*"/>
             <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
         </Grid.RowDefinitions>
-        
-        <Grid Grid.Column="0" Grid.RowSpan="3" Background="#FFD3D7FF"/>
-        <Grid Grid.Column="2" Grid.RowSpan="3" Background="#FFD3D7FF"/>
-        <Grid Grid.Row="2" Grid.ColumnSpan="3" Background="#FFD3D7FF"/>
-        <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="#FFB9BEE8"/>
 
+        <Grid Grid.Row="1" Grid.ColumnSpan="3" Background="#FFD3D7FF"/>
+        <Grid Grid.Column="0" Grid.RowSpan="4" Background="#FFD3D7FF"/>
+        <Grid Grid.Column="2" Grid.RowSpan="4" Background="#FFD3D7FF"/>
+        <Grid Grid.Row="3" Grid.ColumnSpan="3" Background="#FFD3D7FF"/>
+        <Grid Grid.Row="0" Grid.ColumnSpan="3" Background="#FF9E9FF5"/>
+        
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Column="1">
-            <TextBlock Text="Air" VerticalAlignment="Center" FontSize="30" FontFamily="Sonic XBd BT"/>
+            <TextBlock Text="Air" VerticalAlignment="Center" FontSize="40" FontFamily="Old English Text MT"/>
             <Image Source="Resources/logo.png"/>
-            <TextBlock Text="Fly" VerticalAlignment="Center" FontSize="30" FontFamily="Sonic XBd BT"/>
+            <TextBlock Text="Fly" VerticalAlignment="Center" FontSize="40" FontFamily="Old English Text MT"/>
         </StackPanel>
 
 
-        <Frame x:Name="MainFrame" Grid.Row="1" NavigationUIVisibility="Hidden" Grid.Column="1" ContentRendered="MainFrame_ContentRendered"/>
+        <Frame x:Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden" Grid.Column="1" ContentRendered="MainFrame_ContentRendered"/>
 
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="2">
-            <Button x:Name="BtnBack" Content="Назад" Click="BtnBack_Click"/>
-            <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click"/>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <Button x:Name="BtnZakaz" Content="Список заказов" Width="150" Click="BtnZakaz_Click"/>
+            <Button x:Name="BtnPass" Content="Список пассажиров" Width="150" Click="BtnPass_Click"/>
+            <Button x:Name="BtnReis" Content="Список рейсов" Width="150" Click="BtnReis_Click"/>
+            <Button x:Name="BtnBack" Content="Назад" Click="BtnBack_Click" Width="150"/>
         </StackPanel>
-        
+        <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Width="150"/>
+
     </Grid>
 </Window>

@@ -44,5 +44,20 @@ namespace CherednichenkoKursovoi
         {
             Environment.Exit(0);
         }
+
+        private void BtnZakaz_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Pages.PageZakaz());
+        }
+
+        private void BtnPass_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Pages.PagePass());
+        }
+
+        private void BtnReis_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new Pages.PageReis());
+        }
     }
 }
