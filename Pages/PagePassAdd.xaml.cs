@@ -20,8 +20,7 @@ namespace CherednichenkoKursovoi.Pages
     /// </summary>
     public partial class PagePassAdd : Page
     {
-        decimal s;
-
+        
         private Passajir _currentPass = new Passajir();
 
         public PagePassAdd(Passajir selectPass)
@@ -32,6 +31,7 @@ namespace CherednichenkoKursovoi.Pages
                 _currentPass = selectPass;
             }
             DataContext = _currentPass;
+
         }
 
         private void BtnOtm_Click(object sender, RoutedEventArgs e)
@@ -49,10 +49,10 @@ namespace CherednichenkoKursovoi.Pages
                 errors.AppendLine("Введите имя");
             if (string.IsNullOrWhiteSpace(_currentPass.Otchestvo))
                 errors.AppendLine("Введите отчество");
-            if (_currentPass.Phone <= 0 || _currentPass.Phone.ToString(TBPhone.Text).Length < 11 )
+            if (_currentPass.Phone <= 0 || _currentPass.Phone.ToString(TBPhone.Text).Length < 11 || TBPhone.Text.Any(Char.IsLetter))
                 errors.AppendLine("Введите номер телефона (11 цифр)");
-            if (_currentPass.Pasport <= 0 || _currentPass.Pasport.ToString(TBPass.Text).Length < 10)
-                errors.AppendLine("Введите данные паспорта (10 цифр)");
+            if (_currentPass.Pasport <= 0 || _currentPass.Pasport.ToString(TBPass.Text).Length < 10 || TBPass.Text.Any(Char.IsLetter))
+                errors.AppendLine("Введите данные паспорта: серию (4 цифры) и номер (6 цифр)");
 
 
             if (errors.Length > 0)
@@ -77,28 +77,5 @@ namespace CherednichenkoKursovoi.Pages
             }
         }
 
-        private void TBPhone_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                decimal s = Convert.ToDecimal(TBPhone.Text);
-            }
-            catch (System.FormatException)
-            {
-                
-            }
-        }
-
-        private void TBPass_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            try
-            {
-                decimal s = Convert.ToDecimal(TBPass.Text);
-            }
-            catch (System.FormatException)
-            {
-
-            }
-        }
     }
 }

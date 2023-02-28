@@ -40,7 +40,7 @@
             <Button x:Name="BtnReis" Content="Список рейсов" Width="150" Click="BtnReis_Click"/>
             <Button x:Name="BtnBack" Content="Назад" Click="BtnBack_Click" Width="150"/>
         </StackPanel>
-        <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Width="150"/>
+        <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Width="150" Background="#FF8676FF" />
 
     </Grid>
 </Window>
