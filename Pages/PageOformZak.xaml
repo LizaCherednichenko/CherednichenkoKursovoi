@@ -11,15 +11,15 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="50">
-                <TextBlock Width="100" Text="Рейс" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="100" Text="Рейс" VerticalAlignment="Center"/>
                 <ComboBox Width="200" x:Name="CBReis" SelectedItem="{Binding Reis}" DisplayMemberPath="Number" Height="30"/>
-                <Button x:Name="BtnReis" Content="Посмотреть список" Click="BtnReis_Click"/>
+                <Button x:Name="BtnReis" Content="Посмотреть список" Click="BtnReis_Click" Width="150"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="50">
-                <TextBlock Width="100" Text="Пассажир" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="100" Text="Пассажир" VerticalAlignment="Center"/>
                 <ComboBox Width="200" x:Name="CBPass" SelectedItem="{Binding Passajir}" DisplayMemberPath="Familia" Height="30"/>
-                <Button x:Name="BtnPass" Content="Посмотреть список" Click="BtnPass_Click"/>
+                <Button x:Name="BtnPass" Content="Посмотреть список" Click="BtnPass_Click" Width="150"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">

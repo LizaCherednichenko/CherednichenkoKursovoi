@@ -23,16 +23,27 @@ namespace CherednichenkoKursovoi
         public MainWindow()
         {
             InitializeComponent();
-            MainFrame.Navigate(new Pages.PageZakaz());
+            MainFrame.Navigate(new Pages.PageAutoriz());
             Manager.MainFrame = MainFrame;
         }
 
         private void MainFrame_ContentRendered(object sender, EventArgs e)
         {
             if (MainFrame.CanGoBack)
+            {
+                BtnZakaz.Visibility = Visibility.Visible;
+                BtnPass.Visibility = Visibility.Visible;
+                BtnReis.Visibility = Visibility.Visible;
                 BtnBack.Visibility = Visibility.Visible;
+            }
             else
+            {
+                BtnZakaz.Visibility = Visibility.Hidden;
+                BtnPass.Visibility = Visibility.Hidden;
+                BtnReis.Visibility = Visibility.Hidden;
                 BtnBack.Visibility = Visibility.Hidden;
+            }
+
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)

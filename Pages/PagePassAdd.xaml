@@ -11,27 +11,27 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Фамилия" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="130" Text="Фамилия" VerticalAlignment="Center"/>
             <TextBox Width="200" Text="{Binding Familia}"/>
         </StackPanel>
             
         <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Имя" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="130" Text="Имя" VerticalAlignment="Center"/>
                 <TextBox Width="200" Text="{Binding Name}"/>
         </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Отчество" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="130" Text="Отчество" VerticalAlignment="Center"/>
                 <TextBox Width="200" Text="{Binding Otchestvo}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Номер телефона" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="130" Text="Номер телефона" VerticalAlignment="Center"/>
                 <TextBox x:Name="TBPhone" Width="200" Text="{Binding Phone}" MaxLength="11"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Паспорт" VerticalAlignment="Center" FontSize="16"/>
+                <TextBlock Width="130" Text="Паспорт" VerticalAlignment="Center"/>
                 <TextBox x:Name="TBPass" Width="200" Text="{Binding Pasport}" MaxLength="10"/>
             </StackPanel>
 

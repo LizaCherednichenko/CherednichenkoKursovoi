@@ -32,8 +32,8 @@
         </DataGrid>
 
         <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="BtnAddPass" Content="Добавить пассажира" Width="150" Click="BtnAddPass_Click"/>
-            <Button x:Name="BtnDel" Content="Удалить пассажира" Width="150" Click="BtnDel_Click"/>
+            <Button x:Name="BtnAddPass" Content="Добавить пассажира" Width="160" Click="BtnAddPass_Click"/>
+            <Button x:Name="BtnDel" Content="Удалить пассажира" Width="160" Click="BtnDel_Click"/>
         </StackPanel>
 
 

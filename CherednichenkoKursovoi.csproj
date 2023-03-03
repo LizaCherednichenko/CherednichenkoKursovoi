@@ -89,6 +89,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelAir.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAutoriz.xaml.cs">
+      <DependentUpon>PageAutoriz.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageOformZak.xaml.cs">
       <DependentUpon>PageOformZak.xaml</DependentUpon>
     </Compile>
@@ -122,6 +125,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\PageAutoriz.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageZakaz.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
