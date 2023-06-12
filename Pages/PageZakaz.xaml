@@ -18,7 +18,20 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер заказа" Binding="{Binding IdZakaz}" Width="*"/>
                 <DataGridTextColumn Header="Рейс" Binding="{Binding Reis.Number}" Width="*"/>
-                <DataGridTextColumn Header="Пассажир" Binding="{Binding Passajir.Familia}" Width="*"/>
+                <!--<DataGridTextColumn Header="Пассажир" Binding="{Binding Passajir.Familia}" Width="*"/>-->
+
+                <DataGridTemplateColumn Header="Пассажир" Width="2*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Passajir.Familia}" Margin="5"/>
+                                <TextBlock Text="{Binding Passajir.Name}" Margin="5"/>
+                                <TextBlock Text="{Binding Passajir.Otchestvo}" Margin="5"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
                 <DataGridTemplateColumn Width="auto">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>

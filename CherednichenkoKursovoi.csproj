@@ -127,6 +127,9 @@
     <Compile Include="Pages\BiletPrint.xaml.cs">
       <DependentUpon>BiletPrint.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PageAirplane.xaml.cs">
+      <DependentUpon>PageAirplane.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageAutoriz.xaml.cs">
       <DependentUpon>PageAutoriz.xaml</DependentUpon>
     </Compile>
@@ -152,6 +155,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Pages\BiletPrint.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PageAirplane.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

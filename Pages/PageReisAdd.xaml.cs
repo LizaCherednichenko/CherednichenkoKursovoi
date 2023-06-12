@@ -90,6 +90,11 @@ namespace CherednichenkoKursovoi.Pages
                 MessageBox.Show(ex.Message);
             }
         }
+
+        private void BtnAirplane_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new PageAirplane());
+        }
     }
     }
 

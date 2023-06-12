@@ -49,7 +49,7 @@
             <StackPanel Orientation="Horizontal" Margin="5" Height="50">
                 <TextBlock Width="150" Text="Самолет" VerticalAlignment="Center"/>
                 <ComboBox Width="200" x:Name="CBAirplane" SelectedItem="{Binding Airplane}" DisplayMemberPath="Name" Height="30"/>
-                <Button x:Name="BtnAirplane" Content="Посмотреть список"/>
+                <Button x:Name="BtnAirplane" Content="Посмотреть список" Click="BtnAirplane_Click"/>
             </StackPanel>
 
 

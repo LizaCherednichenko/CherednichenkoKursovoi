@@ -67,10 +67,14 @@ namespace CherednichenkoKursovoi.Pages
             }
 
             if (_currentZakaz.IdZakaz == 0)
+            {
                 AirEntities.GetContext().Zakaz.Add(_currentZakaz);
+            }
+                
             
             try
             {
+
                 AirEntities.GetContext().SaveChanges();
                 MessageBox.Show("Информация сохранена!");
                 Manager.MainFrame.GoBack();

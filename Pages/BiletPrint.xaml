@@ -14,15 +14,15 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="160"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.RowSpan="2" Grid.Column="0" Background="#FF98BAFF">
-            <Image Source="/Resources/logo.png" Margin="5" VerticalAlignment="Top"/>
+        <Grid Grid.RowSpan="2" Grid.Column="0" Background="#FF9E9FF5">
+            <Image Source="/Resources/logo.png" Margin="5" VerticalAlignment="Top" Width="120"/>
             <Button x:Name="BtnPrint" VerticalAlignment="Bottom" Content="Печать" Click="BtnPrint_Click"/>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="1" Background="#FF98BAFF">
+        <Grid Grid.Row="0" Grid.Column="1" Background="#FF9E9FF5">
             <TextBlock Text="AirFly" VerticalAlignment="Center" FontSize="40"/>
         </Grid>
 
