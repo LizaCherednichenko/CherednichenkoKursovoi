@@ -33,13 +33,7 @@
 
 
         <Frame x:Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden" Grid.Column="1" ContentRendered="MainFrame_ContentRendered"/>
-
-        <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
-            <Button x:Name="BtnZakaz" Content="Список заказов" Width="150" Click="BtnZakaz_Click"/>
-            <Button x:Name="BtnPass" Content="Список пассажиров" Width="150" Click="BtnPass_Click"/>
-            <Button x:Name="BtnReis" Content="Список рейсов" Width="150" Click="BtnReis_Click"/>-->
-        <!--</StackPanel>-->
-
+        
         <Menu x:Name="Menu1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Background="#FFCBA6FF" Width="150" Height="30" FontFamily="Franklin Gothic Demi Cond" FontSize="14" FontWeight="Bold">
             <MenuItem Header="Меню" Background="#FFCBA6FF"  Width="150" Height="30">
                 <MenuItem Header="Заказы" Click="BtnZakaz_Click"/>
