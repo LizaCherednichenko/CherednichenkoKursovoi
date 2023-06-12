@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CherednichenkoKursovoi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +67,11 @@ namespace CherednichenkoKursovoi.Pages
         private void BtnRedact_Click(object sender, RoutedEventArgs e)
         {
             Manager.MainFrame.Navigate(new PageOformZak((sender as Button).DataContext as Zakaz));
+        }
+
+        private void BtnPrint_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.MainFrame.Navigate(new BiletPrint((sender as Button).DataContext as Zakaz));
         }
     }
 }

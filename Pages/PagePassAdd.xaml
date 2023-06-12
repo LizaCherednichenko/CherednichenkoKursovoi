@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:CherednichenkoKursovoi.Pages"
+      xmlns:local="clr-namespace:CherednichenkoKursovoi.Pages" xmlns:wpfx="http://schemas.xceed.com/wpf/xaml/toolkit"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PagePass">
@@ -12,27 +12,29 @@
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Фамилия" VerticalAlignment="Center"/>
-            <TextBox Width="200" Text="{Binding Familia}"/>
+            <TextBox x:Name="TBFamilia" Width="200" Text="{Binding Familia}"/>
         </StackPanel>
             
         <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Имя" VerticalAlignment="Center"/>
-                <TextBox Width="200" Text="{Binding Name}"/>
+                <TextBox x:Name="TBName" Width="200" Text="{Binding Name}"/>
         </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Отчество" VerticalAlignment="Center"/>
-                <TextBox Width="200" Text="{Binding Otchestvo}"/>
+                <TextBox x:Name="TBOtch" Width="200" Text="{Binding Otchestvo}"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Номер телефона" VerticalAlignment="Center"/>
-                <TextBox x:Name="TBPhone" Width="200" Text="{Binding Phone}" MaxLength="11"/>
+                <!--<TextBox x:Name="TBPhone" Width="200" Text="{Binding Phone, StringFormat=8(000)000-00-00}" MaxLength="10"/>-->
+                <wpfx:MaskedTextBox x:Name="TBPhone" Width="200" Height="30" Text="{Binding Phone}" Mask="8(000)000-00-00"/>
             </StackPanel>
             
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Паспорт" VerticalAlignment="Center"/>
-                <TextBox x:Name="TBPass" Width="200" Text="{Binding Pasport}" MaxLength="10"/>
+                <!--<TextBox x:Name="TBPasport" Width="200" Text="{Binding Pasport, StringFormat=0000 000000}" MaxLength="11"/>-->
+                <wpfx:MaskedTextBox x:Name="TBPasport" Width="200" Height="30" Text="{Binding Pasport}" Mask="0000 000000"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center">

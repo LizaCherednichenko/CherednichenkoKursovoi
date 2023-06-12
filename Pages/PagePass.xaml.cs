@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CherednichenkoKursovoi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,7 +26,7 @@ namespace CherednichenkoKursovoi.Pages
         {
             InitializeComponent();
 
-            DGPassaj.ItemsSource = AirEntities.GetContext().Passajir.ToList();
+            DGPassaj.ItemsSource = Models.AirEntities.GetContext().Passajir.ToList();
         }
 
         private void BtnAddPass_Click(object sender, RoutedEventArgs e)

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CherednichenkoKursovoi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -27,7 +28,43 @@ namespace CherednichenkoKursovoi.Pages
 
         private void BtnEnter_Click(object sender, RoutedEventArgs e)
         {
-            Manager.MainFrame.Navigate(new PageZakaz());
+
+            var userObj = AirEntities.GetContext().User.FirstOrDefault(x => x.Login == TbLog.Text && x.Password == PBPass.Password);
+
+            try
+            {
+                if (userObj == null)
+                {
+                    MessageBox.Show("Введите верные логин и пароль");
+                    return;
+                }
+                
+                else
+                {
+                    switch (userObj.IdRole)
+                    {
+                        case 1:
+                            {
+                                Manager.Dostup = 1;
+                                MessageBox.Show($"Здравствуйте, администратор {userObj.Familia} {userObj.Name} {userObj.Otchestvo}");
+                                Manager.MainFrame.Navigate(new PageZakaz());
+                                break;
+                            }
+                        case 2:
+                            {
+                                Manager.Dostup = 2;
+                                MessageBox.Show($"Здравствуйте, менеджер {userObj.Familia} {userObj.Name} {userObj.Otchestvo}");
+                                Manager.MainFrame.Navigate(new PageZakaz());
+                                break;
+                            }
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+            }
+
         }
     }
 }

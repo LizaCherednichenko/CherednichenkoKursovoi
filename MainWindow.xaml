@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CherednichenkoKursovoi"
         mc:Ignorable="d"
-        Title="AirFly" Height="650" MinHeight="450" Width="1000" MinWidth="800" WindowStartupLocation="CenterScreen">
+        Title="AirFly" Height="650" MinHeight="650" Width="1100" MinWidth="1100" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="10"/>
@@ -34,13 +34,24 @@
 
         <Frame x:Name="MainFrame" Grid.Row="2" NavigationUIVisibility="Hidden" Grid.Column="1" ContentRendered="MainFrame_ContentRendered"/>
 
-        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+        <!--<StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
             <Button x:Name="BtnZakaz" Content="Список заказов" Width="150" Click="BtnZakaz_Click"/>
             <Button x:Name="BtnPass" Content="Список пассажиров" Width="150" Click="BtnPass_Click"/>
-            <Button x:Name="BtnReis" Content="Список рейсов" Width="150" Click="BtnReis_Click"/>
+            <Button x:Name="BtnReis" Content="Список рейсов" Width="150" Click="BtnReis_Click"/>-->
+        <!--</StackPanel>-->
+
+        <Menu x:Name="Menu1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Background="#FFCBA6FF" Width="150" Height="30" FontFamily="Franklin Gothic Demi Cond" FontSize="14" FontWeight="Bold">
+            <MenuItem Header="Меню" Background="#FFCBA6FF"  Width="150" Height="30">
+                <MenuItem Header="Заказы" Click="BtnZakaz_Click"/>
+                <MenuItem Header="Пассажиры" Click="BtnPass_Click"/>
+                <MenuItem Header="Рейсы" Click="BtnReis_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1">
             <Button x:Name="BtnBack" Content="Назад" Click="BtnBack_Click" Width="150"/>
+            <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click" Width="150" Background="#FF8676FF" />
         </StackPanel>
-        <Button x:Name="BtnExit" Content="Выход" Click="BtnExit_Click" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="1" Width="150" Background="#FF8676FF" />
 
     </Grid>
 </Window>

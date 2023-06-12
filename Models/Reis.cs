@@ -7,27 +7,34 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CherednichenkoKursovoi
+namespace CherednichenkoKursovoi.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class City
+    public partial class Reis
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public City()
+        public Reis()
         {
-            this.Reis = new HashSet<Reis>();
-            this.Reis1 = new HashSet<Reis>();
+            this.Zakaz = new HashSet<Zakaz>();
         }
     
-        public int IdCity { get; set; }
-        public string Name { get; set; }
-        public string Airport { get; set; }
+        public int IdReis { get; set; }
+        public int Number { get; set; }
+        public int IdCityOtpr { get; set; }
+        public int IdCityPrib { get; set; }
+        public System.DateTime DateOtpravl { get; set; }
+        public System.DateTime DatePribit { get; set; }
+        public System.TimeSpan TimeOtpravl { get; set; }
+        public System.TimeSpan TimePribit { get; set; }
+        public decimal Prise { get; set; }
+        public int IdAirplane { get; set; }
     
+        public virtual Airplane Airplane { get; set; }
+        public virtual City City { get; set; }
+        public virtual City City1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reis> Reis { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reis> Reis1 { get; set; }
+        public virtual ICollection<Zakaz> Zakaz { get; set; }
     }
 }

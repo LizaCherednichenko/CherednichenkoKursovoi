@@ -31,19 +31,22 @@ namespace CherednichenkoKursovoi
         {
             if (MainFrame.CanGoBack)
             {
-                BtnZakaz.Visibility = Visibility.Visible;
-                BtnPass.Visibility = Visibility.Visible;
-                BtnReis.Visibility = Visibility.Visible;
+        //        BtnZakaz.Visibility = Visibility.Visible;
+        //        BtnPass.Visibility = Visibility.Visible;
+        //        BtnReis.Visibility = Visibility.Visible;
                 BtnBack.Visibility = Visibility.Visible;
+                Menu1.Visibility = Visibility.Visible;
             }
             else
             {
-                BtnZakaz.Visibility = Visibility.Hidden;
-                BtnPass.Visibility = Visibility.Hidden;
-                BtnReis.Visibility = Visibility.Hidden;
+        //        BtnZakaz.Visibility = Visibility.Hidden;
+        //        BtnPass.Visibility = Visibility.Hidden;
+        //        BtnReis.Visibility = Visibility.Hidden;
                 BtnBack.Visibility = Visibility.Hidden;
+                Menu1.Visibility = Visibility.Hidden;
             }
 
+            
         }
 
         private void BtnBack_Click(object sender, RoutedEventArgs e)
@@ -70,5 +73,7 @@ namespace CherednichenkoKursovoi
         {
             Manager.MainFrame.Navigate(new Pages.PageReis());
         }
+
+        
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CherednichenkoKursovoi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -49,10 +50,10 @@ namespace CherednichenkoKursovoi.Pages
                 errors.AppendLine("Введите имя");
             if (string.IsNullOrWhiteSpace(_currentPass.Otchestvo))
                 errors.AppendLine("Введите отчество");
-            if (_currentPass.Phone <= 0 || _currentPass.Phone.ToString(TBPhone.Text).Length < 11 || TBPhone.Text.Any(Char.IsLetter))
-                errors.AppendLine("Введите номер телефона (11 цифр)");
-            if (_currentPass.Pasport <= 0 || _currentPass.Pasport.ToString(TBPass.Text).Length < 10 || TBPass.Text.Any(Char.IsLetter))
-                errors.AppendLine("Введите данные паспорта: серию (4 цифры) и номер (6 цифр)");
+            if (string.IsNullOrWhiteSpace(_currentPass.Phone))
+                errors.AppendLine("Введите номер телефона");
+            if (string.IsNullOrWhiteSpace(_currentPass.Pasport))
+                errors.AppendLine("Введите данные паспорта: серию и номер");
 
 
             if (errors.Length > 0)

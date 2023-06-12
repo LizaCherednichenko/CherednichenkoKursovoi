@@ -11,15 +11,14 @@
     <Grid>
         <StackPanel VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
-                <TextBlock Width="130" Text="Введите логин" VerticalAlignment="Center"/>
-                <TextBox Width="200"/>
+                <TextBlock Width="130" Text="Введите логин" VerticalAlignment="Center" FontSize="16"/>
+                <TextBox x:Name="TbLog" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="5" HorizontalAlignment="Center" Height="30">
                 <TextBlock Width="130" Text="Введите пароль" VerticalAlignment="Center"/>
-                <PasswordBox Width="200"/>
+                <PasswordBox x:Name="PBPass" Width="200"/>
             </StackPanel>
             <Button x:Name="BtnEnter" Content="Войти" Click="BtnEnter_Click"/>
         </StackPanel>
-
     </Grid>
 </Page>

@@ -7,33 +7,26 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CherednichenkoKursovoi
+namespace CherednichenkoKursovoi.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Reis
+    public partial class Airplane
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Reis()
+        public Airplane()
         {
-            this.Zakaz = new HashSet<Zakaz>();
+            this.Reis = new HashSet<Reis>();
         }
     
-        public int IdReis { get; set; }
-        public int Number { get; set; }
-        public int IdCityOtpr { get; set; }
-        public int IdCityPrib { get; set; }
-        public System.DateTime Otpravl { get; set; }
-        public System.DateTime Pribit { get; set; }
-        public decimal Prise { get; set; }
+        public int IdAirpalne { get; set; }
+        public string Name { get; set; }
         public int KolichMest { get; set; }
-        public int IdAirplane { get; set; }
+        public string RaspolojenieImg { get; set; }
+        public string Info { get; set; }
     
-        public virtual Airplane Airplane { get; set; }
-        public virtual City City { get; set; }
-        public virtual City City1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Zakaz> Zakaz { get; set; }
+        public virtual ICollection<Reis> Reis { get; set; }
     }
 }

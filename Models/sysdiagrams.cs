@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CherednichenkoKursovoi
+namespace CherednichenkoKursovoi.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Zakaz
+    public partial class sysdiagrams
     {
-        public int IdZakaz { get; set; }
-        public int IdReis { get; set; }
-        public int IdPassajir { get; set; }
-    
-        public virtual Passajir Passajir { get; set; }
-        public virtual Reis Reis { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CherednichenkoKursovoi
+namespace CherednichenkoKursovoi.Models
 {
     using System;
     using System.Data.Entity;
@@ -20,7 +20,7 @@ namespace CherednichenkoKursovoi
 
         public static AirEntities GetContext()
         {
-            if (_context == null)
+            if ( _context == null )
                 _context = new AirEntities();
             return _context;
         }
@@ -39,7 +39,9 @@ namespace CherednichenkoKursovoi
         public virtual DbSet<City> City { get; set; }
         public virtual DbSet<Passajir> Passajir { get; set; }
         public virtual DbSet<Reis> Reis { get; set; }
+        public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<User> User { get; set; }
         public virtual DbSet<Zakaz> Zakaz { get; set; }
     }
 }

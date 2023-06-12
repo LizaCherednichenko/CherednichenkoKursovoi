@@ -9,6 +9,8 @@ namespace CherednichenkoKursovoi
 {
     class Manager
     {
-        public static Frame MainFrame{ get; set; }
+        public static Frame MainFrame;
+
+        public static int Dostup;
     }
 }

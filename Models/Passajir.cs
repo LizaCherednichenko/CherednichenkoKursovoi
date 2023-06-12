@@ -7,26 +7,27 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CherednichenkoKursovoi
+namespace CherednichenkoKursovoi.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Airplane
+    public partial class Passajir
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Airplane()
+        public Passajir()
         {
-            this.Reis = new HashSet<Reis>();
+            this.Zakaz = new HashSet<Zakaz>();
         }
     
-        public int IdAirpalne { get; set; }
+        public int IdPassajir { get; set; }
+        public string Familia { get; set; }
         public string Name { get; set; }
-        public int KolichMest { get; set; }
-        public string RaspolojenieImg { get; set; }
-        public string Info { get; set; }
+        public string Otchestvo { get; set; }
+        public string Phone { get; set; }
+        public string Pasport { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Reis> Reis { get; set; }
+        public virtual ICollection<Zakaz> Zakaz { get; set; }
     }
 }

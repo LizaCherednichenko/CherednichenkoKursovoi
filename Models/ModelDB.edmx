@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище AirModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище DBModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Airplane">
           <Key>
             <PropertyRef Name="IdAirpalne" />
@@ -31,8 +31,8 @@
           <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Phone" Type="decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="Pasport" Type="decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Pasport" Type="nvarchar" MaxLength="20" Nullable="false" />
         </EntityType>
         <EntityType Name="Reis">
           <Key>
@@ -42,11 +42,19 @@
           <Property Name="Number" Type="int" Nullable="false" />
           <Property Name="IdCityOtpr" Type="int" Nullable="false" />
           <Property Name="IdCityPrib" Type="int" Nullable="false" />
-          <Property Name="Otpravl" Type="datetime" Nullable="false" />
-          <Property Name="Pribit" Type="datetime" Nullable="false" />
+          <Property Name="DateOtpravl" Type="date" Nullable="false" />
+          <Property Name="DatePribit" Type="date" Nullable="false" />
+          <Property Name="TimeOtpravl" Type="time" Precision="7" Nullable="false" />
+          <Property Name="TimePribit" Type="time" Precision="7" Nullable="false" />
           <Property Name="Prise" Type="money" Nullable="false" />
-          <Property Name="KolichMest" Type="int" Nullable="false" />
           <Property Name="IdAirplane" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameRole" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -57,6 +65,18 @@
           <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Familia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Otchestvo" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Zakaz">
           <Key>
@@ -102,6 +122,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Zakaz_Passajir">
           <End Role="Passajir" Type="Self.Passajir" Multiplicity="1" />
           <End Role="Zakaz" Type="Self.Zakaz" Multiplicity="*" />
@@ -126,12 +158,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище AirModelContainer">
+        <EntityContainer Name="Хранилище DBModelContainer">
           <EntitySet Name="Airplane" EntityType="Self.Airplane" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Passajir" EntityType="Self.Passajir" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reis" EntityType="Self.Reis" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Reis_Airplane" Association="Self.FK_Reis_Airplane">
             <End Role="Airplane" EntitySet="Airplane" />
@@ -144,6 +178,10 @@
           <AssociationSet Name="FK_Reis_City1" Association="Self.FK_Reis_City1">
             <End Role="City" EntitySet="City" />
             <End Role="Reis" EntitySet="Reis" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
           </AssociationSet>
           <AssociationSet Name="FK_Zakaz_Passajir" Association="Self.FK_Zakaz_Passajir">
             <End Role="Passajir" EntitySet="Passajir" />
@@ -158,7 +196,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="AirModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Airplane">
           <Key>
             <PropertyRef Name="IdAirpalne" />
@@ -188,8 +226,8 @@
           <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="Decimal" Precision="11" Scale="0" Nullable="false" />
-          <Property Name="Pasport" Type="Decimal" Precision="10" Scale="0" Nullable="false" />
+          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pasport" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Passajir" FromRole="Passajir" ToRole="Zakaz" />
         </EntityType>
         <EntityType Name="Reis">
@@ -200,15 +238,24 @@
           <Property Name="Number" Type="Int32" Nullable="false" />
           <Property Name="IdCityOtpr" Type="Int32" Nullable="false" />
           <Property Name="IdCityPrib" Type="Int32" Nullable="false" />
-          <Property Name="Otpravl" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Pribit" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DateOtpravl" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePribit" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TimeOtpravl" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="TimePribit" Type="Time" Nullable="false" Precision="7" />
           <Property Name="Prise" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
-          <Property Name="KolichMest" Type="Int32" Nullable="false" />
           <Property Name="IdAirplane" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Airplane" Relationship="Self.FK_Reis_Airplane" FromRole="Reis" ToRole="Airplane" />
           <NavigationProperty Name="City" Relationship="Self.FK_Reis_City" FromRole="Reis" ToRole="City" />
           <NavigationProperty Name="City1" Relationship="Self.FK_Reis_City1" FromRole="Reis" ToRole="City" />
           <NavigationProperty Name="Zakaz" Relationship="Self.FK_Zakaz_Reis" FromRole="Reis" ToRole="Zakaz" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRole" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Role" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -219,6 +266,19 @@
           <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Familia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Otchestvo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
         <EntityType Name="Zakaz">
           <Key>
@@ -290,12 +350,26 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Role">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AirEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Airplane" EntityType="Self.Airplane" />
           <EntitySet Name="City" EntityType="Self.City" />
           <EntitySet Name="Passajir" EntityType="Self.Passajir" />
           <EntitySet Name="Reis" EntityType="Self.Reis" />
+          <EntitySet Name="Role" EntityType="Self.Role" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="User" EntityType="Self.User" />
           <EntitySet Name="Zakaz" EntityType="Self.Zakaz" />
           <AssociationSet Name="FK_Reis_Airplane" Association="Self.FK_Reis_Airplane">
             <End Role="Airplane" EntitySet="Airplane" />
@@ -317,15 +391,19 @@
             <End Role="Reis" EntitySet="Reis" />
             <End Role="Zakaz" EntitySet="Zakaz" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Role" Association="Self.FK_User_Role">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище AirModelContainer" CdmEntityContainer="AirEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище DBModelContainer" CdmEntityContainer="AirEntities">
           <EntitySetMapping Name="Airplane">
-            <EntityTypeMapping TypeName="AirModel.Airplane">
+            <EntityTypeMapping TypeName="DBModel.Airplane">
               <MappingFragment StoreEntitySet="Airplane">
                 <ScalarProperty Name="IdAirpalne" ColumnName="IdAirpalne" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -336,7 +414,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="City">
-            <EntityTypeMapping TypeName="AirModel.City">
+            <EntityTypeMapping TypeName="DBModel.City">
               <MappingFragment StoreEntitySet="City">
                 <ScalarProperty Name="IdCity" ColumnName="IdCity" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -345,7 +423,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Passajir">
-            <EntityTypeMapping TypeName="AirModel.Passajir">
+            <EntityTypeMapping TypeName="DBModel.Passajir">
               <MappingFragment StoreEntitySet="Passajir">
                 <ScalarProperty Name="IdPassajir" ColumnName="IdPassajir" />
                 <ScalarProperty Name="Familia" ColumnName="Familia" />
@@ -357,22 +435,31 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reis">
-            <EntityTypeMapping TypeName="AirModel.Reis">
+            <EntityTypeMapping TypeName="DBModel.Reis">
               <MappingFragment StoreEntitySet="Reis">
                 <ScalarProperty Name="IdReis" ColumnName="IdReis" />
                 <ScalarProperty Name="Number" ColumnName="Number" />
                 <ScalarProperty Name="IdCityOtpr" ColumnName="IdCityOtpr" />
                 <ScalarProperty Name="IdCityPrib" ColumnName="IdCityPrib" />
-                <ScalarProperty Name="Otpravl" ColumnName="Otpravl" />
-                <ScalarProperty Name="Pribit" ColumnName="Pribit" />
+                <ScalarProperty Name="DateOtpravl" ColumnName="DateOtpravl" />
+                <ScalarProperty Name="DatePribit" ColumnName="DatePribit" />
+                <ScalarProperty Name="TimeOtpravl" ColumnName="TimeOtpravl" />
+                <ScalarProperty Name="TimePribit" ColumnName="TimePribit" />
                 <ScalarProperty Name="Prise" ColumnName="Prise" />
-                <ScalarProperty Name="KolichMest" ColumnName="KolichMest" />
                 <ScalarProperty Name="IdAirplane" ColumnName="IdAirplane" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Role">
+            <EntityTypeMapping TypeName="DBModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="NameRole" ColumnName="NameRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="AirModel.sysdiagrams">
+            <EntityTypeMapping TypeName="DBModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -382,8 +469,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="DBModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Familia" ColumnName="Familia" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Otchestvo" ColumnName="Otchestvo" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Zakaz">
-            <EntityTypeMapping TypeName="AirModel.Zakaz">
+            <EntityTypeMapping TypeName="DBModel.Zakaz">
               <MappingFragment StoreEntitySet="Zakaz">
                 <ScalarProperty Name="IdZakaz" ColumnName="IdZakaz" />
                 <ScalarProperty Name="IdReis" ColumnName="IdReis" />

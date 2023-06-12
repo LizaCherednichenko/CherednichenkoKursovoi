@@ -6,19 +6,38 @@
       xmlns:local="clr-namespace:CherednichenkoKursovoi.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="PageReis">
+      Title="PageReis" IsVisibleChanged="Page_IsVisibleChanged">
 
     <Grid>
-        <DataGrid x:Name="DGReis" AutoGenerateColumns="False" IsReadOnly="True">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+        
+        <DataGrid x:Name="DGReis" AutoGenerateColumns="False" IsReadOnly="True" Grid.Row="0">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Номер рейса" Binding="{Binding Number}" Width="1.5*"/>
                 <DataGridTextColumn Header="Город отправления" Binding="{Binding City.Name}" Width="2.1*"/>
                 <DataGridTextColumn Header="Город прибытия" Binding="{Binding City1.Name}" Width="2*"/>
-                <DataGridTextColumn Header="Дата отправления" Binding="{Binding Otpravl}" Width="2.2*"/>
-                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding Pribit}" Width="2.2*"/>
+                <DataGridTextColumn Header="Дата отправления" Binding="{Binding DateOtpravl, StringFormat=\{0:dd.MM.yy\}}" Width="2.2*"/>
+                <DataGridTextColumn Header="Время отправления" Binding="{Binding TimeOtpravl}" Width="2.2*"/>
+                <DataGridTextColumn Header="Дата прибытия" Binding="{Binding DatePribit, StringFormat=\{0:dd.MM.yy\}}" Width="2.2*"/>
+                <DataGridTextColumn Header="Время прибытия" Binding="{Binding TimePribit}" Width="2.2*"/>
                 <DataGridTextColumn Header="Цена" Binding="{Binding Prise, StringFormat=0.00}" Width="1*"/>
                 <DataGridTextColumn Header="Количество мест" Binding="{Binding KolichMest}" Width="1.9*"/>
+                <DataGridTemplateColumn x:Name="ColRedact" Width="auto">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button x:Name="BtnRedact" Content="Изменить" Click="BtnRedact_Click"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button x:Name="BtnAddReis" Content="Добавить рейс" Width="150" Click="BtnAddReis_Click"/>
+            <Button x:Name="BtnDel" Content="Удалить рейс" Width="150" Click="BtnDel_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
