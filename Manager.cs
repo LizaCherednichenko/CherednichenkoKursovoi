@@ -12,5 +12,7 @@ namespace CherednichenkoKursovoi
         public static Frame MainFrame;
 
         public static int Dostup;
+
+
     }
 }

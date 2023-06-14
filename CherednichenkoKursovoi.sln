@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33424.131
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CherednichenkoKursovoi", "CherednichenkoKursovoi.csproj", "{F7287216-9303-407C-B7ED-53F898BEAB40}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestMessageAdmin", "..\TestMessageAdmin\TestMessageAdmin.csproj", "{A8830596-FD6E-469D-A456-900CE9AC80BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{F7287216-9303-407C-B7ED-53F898BEAB40}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F7287216-9303-407C-B7ED-53F898BEAB40}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F7287216-9303-407C-B7ED-53F898BEAB40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8830596-FD6E-469D-A456-900CE9AC80BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8830596-FD6E-469D-A456-900CE9AC80BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8830596-FD6E-469D-A456-900CE9AC80BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8830596-FD6E-469D-A456-900CE9AC80BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

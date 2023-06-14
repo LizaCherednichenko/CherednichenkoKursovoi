@@ -36,9 +36,9 @@
         
         <Menu x:Name="Menu1" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Left" Background="#FFCBA6FF" Width="150" Height="30" FontFamily="Franklin Gothic Demi Cond" FontSize="14" FontWeight="Bold">
             <MenuItem Header="Меню" Background="#FFCBA6FF"  Width="150" Height="30">
-                <MenuItem Header="Заказы" Click="BtnZakaz_Click"/>
-                <MenuItem Header="Пассажиры" Click="BtnPass_Click"/>
-                <MenuItem Header="Рейсы" Click="BtnReis_Click"/>
+                <MenuItem x:Name="MIZakaz" Header="Заказы" Click="MIZakaz_Click"/>
+                <MenuItem x:Name="MIPassaj" Header="Пассажиры" Click="MIPassaj_Click"/>
+                <MenuItem x:Name="MIReis" Header="Рейсы" Click="MIReis_Click"/>
             </MenuItem>
         </Menu>
 
